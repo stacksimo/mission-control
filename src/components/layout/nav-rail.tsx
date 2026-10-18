@@ -31,8 +31,11 @@ const navGroups: NavGroup[] = [
     id: 'core',
     items: [
       { id: 'overview', label: 'Overview', icon: <OverviewIcon />, priority: true, essential: true },
+      { id: 'ops', label: 'Ops Desk', icon: <OpsIcon />, priority: false },
+      { id: 'ventures', label: 'Ventures', icon: <VenturesIcon />, priority: false },
       { id: 'agents', label: 'Agents', icon: <AgentsIcon />, priority: true, essential: true },
       { id: 'tasks', label: 'Tasks', icon: <TasksIcon />, priority: true, essential: true },
+      { id: 'review-queue', label: 'Review Queue', icon: <ReviewIcon />, priority: false },
       { id: 'chat', label: 'Chat', icon: <ChatIcon />, priority: false, essential: true },
       { id: 'board', label: 'Board', icon: <BoardIcon />, priority: false },
       { id: 'channels', label: 'Channels', icon: <ChannelsIcon />, priority: false },
@@ -68,6 +71,7 @@ const navGroups: NavGroup[] = [
     id: 'admin',
     label: 'ADMIN',
     items: [
+      { id: 'ai-control', label: 'AI Control', icon: <KeyIcon />, priority: false },
       { id: 'security', label: 'Security', icon: <SecurityIcon />, priority: false },
       { id: 'users', label: 'Users', icon: <UsersIcon />, priority: false },
       { id: 'audit', label: 'Audit', icon: <AuditIcon />, priority: false },
@@ -1294,6 +1298,42 @@ function RevenueIcon() {
       <path d="M1.5 14.5h13" />
       <path d="M2.5 11l3.5-4 3 2.5 4.5-6" />
       <circle cx="13.5" cy="3.5" r="1" />
+    </svg>
+  )
+}
+
+function OpsIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 13V7M8 13V3M13 13V9" />
+      <path d="M1.5 14.5h13" />
+    </svg>
+  )
+}
+
+function VenturesIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1.5" y="4.5" width="13" height="9" rx="1" />
+      <path d="M5.5 4.5V3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1.5M1.5 8.5h13" />
+    </svg>
+  )
+}
+
+function ReviewIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 1.5l5 2v4c0 3.5-2.5 6-5 7-2.5-1-5-3.5-5-7v-4z" />
+      <path d="M5.5 7.5l2 2 3-3.5" />
+    </svg>
+  )
+}
+
+function KeyIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="5.5" cy="5.5" r="3.5" />
+      <path d="M8 8l6 6M11.5 11.5l1.5-1.5M13.5 13.5l1.5-1.5" />
     </svg>
   )
 }

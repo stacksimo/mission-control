@@ -47,6 +47,8 @@ export type EventType =
   | 'run.eval_attached'
   | 'task.escalated'
   | 'session.updated'
+  | 'review.submitted'
+  | 'review.decided'
 
 class ServerEventBus extends EventEmitter {
   private static instance: ServerEventBus | null = null

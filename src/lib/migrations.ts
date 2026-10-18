@@ -1587,6 +1587,42 @@ const migrations: Migration[] = [
         CREATE INDEX IF NOT EXISTS idx_metric_snapshots_integration ON metric_snapshots(integration_id, captured_at);
       `)
     }
+  },
+  {
+    // Venture/desk layer: projects carry a category, a monthly revenue target
+    // and a free-form analytics blob (agent-pushed telemetry chips). Review
+    // deliverables are a standalone sign-off queue agents submit evidence to.
+    id: '057_desk_layer',
+    up: (db) => {
+      const projectCols = db.prepare(`PRAGMA table_info(projects)`).all() as Array<{ name: string }>
+      const has = (name: string) => projectCols.some((c) => c.name === name)
+      if (!has('category')) db.exec(`ALTER TABLE projects ADD COLUMN category TEXT`)
+      if (!has('revenue_target')) db.exec(`ALTER TABLE projects ADD COLUMN revenue_target REAL`)
+      if (!has('analytics')) db.exec(`ALTER TABLE projects ADD COLUMN analytics TEXT`)
+
+      db.exec(`
+        CREATE TABLE IF NOT EXISTS review_deliverables (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          workspace_id INTEGER NOT NULL DEFAULT 1,
+          project_id INTEGER,
+          title TEXT NOT NULL,
+          summary TEXT,
+          expected_target TEXT,
+          delivered TEXT,
+          evidence TEXT,
+          status TEXT NOT NULL DEFAULT 'pending',
+          agent_name TEXT,
+          feedback TEXT,
+          created_by TEXT,
+          reviewed_by TEXT,
+          reviewed_at INTEGER,
+          created_at INTEGER NOT NULL DEFAULT (unixepoch()),
+          updated_at INTEGER NOT NULL DEFAULT (unixepoch())
+        );
+        CREATE INDEX IF NOT EXISTS idx_review_deliverables_workspace ON review_deliverables(workspace_id, status);
+        CREATE INDEX IF NOT EXISTS idx_review_deliverables_project ON review_deliverables(project_id);
+      `)
+    }
   }
 ]
 
