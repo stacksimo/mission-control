@@ -34,6 +34,7 @@ const navGroups: NavGroup[] = [
       { id: 'agents', label: 'Agents', icon: <AgentsIcon />, priority: true, essential: true },
       { id: 'tasks', label: 'Tasks', icon: <TasksIcon />, priority: true, essential: true },
       { id: 'chat', label: 'Chat', icon: <ChatIcon />, priority: false, essential: true },
+      { id: 'board', label: 'Board', icon: <BoardIcon />, priority: false },
       { id: 'channels', label: 'Channels', icon: <ChannelsIcon />, priority: false },
       { id: 'skills', label: 'Skills', icon: <SkillsIcon />, priority: false },
       { id: 'memory', label: 'Memory', icon: <MemoryIcon />, priority: false },
@@ -46,6 +47,7 @@ const navGroups: NavGroup[] = [
       { id: 'activity', label: 'Activity', icon: <ActivityIcon />, priority: true, essential: true },
       { id: 'logs', label: 'Logs', icon: <LogsIcon />, priority: false, essential: true },
       { id: 'cost-tracker', label: 'Cost Tracker', icon: <TokensIcon />, priority: false },
+      { id: 'revenue', label: 'Revenue', icon: <RevenueIcon />, priority: false },
       { id: 'nodes', label: 'Nodes', icon: <NodesIcon />, priority: false },
       { id: 'exec-approvals', label: 'Approvals', icon: <ApprovalsIcon />, priority: false },
       { id: 'office', label: 'Office', icon: <OfficeIcon />, priority: false },
@@ -1273,6 +1275,25 @@ function ChatIcon() {
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
       <path d="M13 3H3a1 1 0 0 0-1 1v6l3-2h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" />
       <path d="M6 11v1a1 1 0 0 0 1 1h4l2 2v-4a1 1 0 0 0-1-1h-1" />
+    </svg>
+  )
+}
+
+function BoardIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6.5 2h-4a1 1 0 0 0-1 1v5l2.5-1.5h2.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+      <path d="M9.5 8.5h4a1 1 0 0 1 1 1v4l-2-1.5H9.5a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1z" />
+    </svg>
+  )
+}
+
+function RevenueIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1.5 14.5h13" />
+      <path d="M2.5 11l3.5-4 3 2.5 4.5-6" />
+      <circle cx="13.5" cy="3.5" r="1" />
     </svg>
   )
 }

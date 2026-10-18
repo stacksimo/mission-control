@@ -39,6 +39,8 @@ import { ExecApprovalPanel } from '@/components/panels/exec-approval-panel'
 import { SystemMonitorPanel } from '@/components/panels/system-monitor-panel'
 import { ChatPagePanel } from '@/components/panels/chat-page-panel'
 import { ChatPanel } from '@/components/chat/chat-panel'
+import { BoardPanel } from '@/components/panels/board-panel'
+import { RevenuePanel } from '@/components/panels/revenue-panel'
 import { STORAGE_GATEWAY_URL } from '@/lib/device-identity'
 import { getPluginPanel } from '@/lib/plugins'
 import { shouldRedirectDashboardToHttps } from '@/lib/browser-security'
@@ -517,7 +519,7 @@ export default function Home() {
 }
 
 const ESSENTIAL_PANELS = new Set([
-  'overview', 'agents', 'tasks', 'chat', 'activity', 'logs', 'settings',
+  'overview', 'agents', 'tasks', 'chat', 'board', 'revenue', 'activity', 'logs', 'settings',
 ])
 
 function ContentRouter({ tab }: { tab: string }) {
@@ -639,6 +641,10 @@ function ContentRouter({ tab }: { tab: string }) {
     case 'exec-approvals':
       if (isLocal) return <LocalModeUnavailable panel={tab} />
       return <ExecApprovalPanel />
+    case 'board':
+      return <BoardPanel />
+    case 'revenue':
+      return <RevenuePanel />
     case 'chat':
       return <ChatPagePanel />
     default: {
